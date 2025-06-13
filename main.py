@@ -90,7 +90,7 @@ def run_streamlit_app():
     """
     Lanza la interfaz gráfica de Kraken con Streamlit.
     """
-    app_path = Path(__file__).parent / "kraken" / "ui" / "streamlit_app.py"
+    app_path = Path(__file__).parent / "ui" / "streamlit_app.py"
     subprocess.run([sys.executable, "-m", "streamlit", "run", str(app_path)])
 
 def main():
