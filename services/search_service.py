@@ -129,7 +129,7 @@ def search_cdes(query: str, mode: Literal["fuzzy", "semantic", "hybrid"] = "hybr
     config = get_config()
     top_k = config.cde.default_limit
     fuzzy_threshold = config.duplicates.name_similarity_threshold
-    semantic_threshold = config.cde.get("similarity_threshold", 0.65)
+    semantic_threshold = getattr(config.cde, "similarity_threshold", 0.65)
     rows = [row.__dict__ for row in cde_repo.all()]
     if mode == "fuzzy":
         return fuzzy_search(query, rows, "biz_term", top_k=top_k, threshold=fuzzy_threshold)
