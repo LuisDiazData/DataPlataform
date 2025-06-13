@@ -1,0 +1,55 @@
+version: "2.0.0"
+profile: "prod"
+
+embedding:
+  model_name: "mpne"
+  device: "cpu"         # "cuda" si tienes GPU disponible
+  batch_size: 64
+
+faiss:
+  index_type: "FlatIP"  # opciones: FlatIP, HNSW, IVF_PQ
+  dir: "data/faiss_indices"
+  cache_size: 10000
+
+files:
+  data_dir: "data/"
+  catalogs_dir: "data/catalogs/"
+  faiss_dir: "data/faiss_indices/"
+  models_dir: "data/models/"
+  logs_dir: "logs/"
+
+attributes:
+  technical:
+    default_limit: 10
+    fuzzy_threshold: 70
+    fuzzy_threshold_min: 50
+    fuzzy_threshold_max: 90
+  semantic:
+    default_top_k: 10
+    model_name: "mpne"
+    similarity_threshold: 0.65
+
+cde:
+  default_limit: 10
+  model_name: "mpne"
+
+catalogs:
+  default_limit: 10
+  similarity_threshold: 0.65
+
+duplicates:
+  name_similarity_threshold: 80
+  desc_similarity_threshold: 0.7
+  max_pairs: 100
+  export_path: "data/duplicates.csv"
+
+infra:
+  auto_reindex_on_catalog_change: false
+  enable_ingestion_logging: true
+  ingestion_log_retention_days: 180
+  watcher_debounce_ms: 2000
+
+ui:
+  max_results_display: 20
+  enable_dark_mode: true
+  feedback_enabled: true
