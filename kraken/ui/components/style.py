@@ -1,6 +1,10 @@
 """
 Kraken UI Styles
 Inyecta CSS global (claro/oscuro), define helpers de tema y permite alternar tema dinámicamente.
+
+Los archivos ``kraken.css``, ``kraken_dark.css`` y ``logo.svg`` deben ubicarse en
+``kraken/ui/assets/``. Si no están presentes, la aplicación mostrará advertencias
+y usará estilos por defecto.
 """
 
 import streamlit as st
