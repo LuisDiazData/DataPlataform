@@ -6,10 +6,10 @@ Exposes version, configuration loader and key base modules.
 """
 
 from .config import get_config, KrakenConfig
-from .models import (
+from .schemas import (
     Attribute,
     CDE,
-    Catalog,
+    CatalogS080,
     QualityRule,
     Feedback,
     DuplicateHistory,
@@ -28,7 +28,7 @@ __all__ = [
     "KrakenConfig",
     "Attribute",
     "CDE",
-    "Catalog",
+    "CatalogS080",
     "QualityRule",
     "Feedback",
     "DuplicateHistory",
