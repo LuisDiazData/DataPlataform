@@ -30,7 +30,9 @@ for repo in ["attribute_repo", "cde_repo", "catalog_repo"]:
     mod.__dict__[repo] = types.SimpleNamespace(all=lambda: [])
     sys.modules[f"kraken.repositories.{repo}"] = mod
 
-spec = importlib.util.spec_from_file_location("search_service", ROOT / "services" / "search_service.py")
+spec = importlib.util.spec_from_file_location(
+    "search_service", ROOT / "kraken" / "services" / "search_service.py"
+)
 search_service = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(search_service)
 
