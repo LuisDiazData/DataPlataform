@@ -24,7 +24,9 @@ repo_mod = types.ModuleType("kraken.repositories.cde_repo")
 repo_mod.cde_repo = repo_stub
 sys.modules["kraken.repositories.cde_repo"] = repo_mod
 
-spec = importlib.util.spec_from_file_location("cde_service", ROOT / "services" / "cde_service.py")
+spec = importlib.util.spec_from_file_location(
+    "cde_service", ROOT / "kraken" / "services" / "cde_service.py"
+)
 cde_service = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(cde_service)
 
