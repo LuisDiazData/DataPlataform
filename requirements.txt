@@ -1,0 +1,10 @@
+streamlit
+sqlalchemy
+pandas
+sentence_transformers
+faiss-cpu
+rapidfuzz
+pydantic
+PyYAML
+numpy
+openpyxl
