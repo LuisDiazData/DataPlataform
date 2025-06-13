@@ -48,13 +48,26 @@ def render_duplicates():
         # Permitir editar decisión si se desea
         if st.button(f"Modificar decisión", key=f"edit_decision_{dupe.id}"):
             def on_confirm_duplicate():
-                duplicate_service.resolve_duplicate(dupe.cde_a, dupe.cde_b, True, user, comment="Modificado")
+                duplicate_service.resolve_duplicate(
+                    dupe.cde_a,
+                    dupe.cde_b,
+                    True,
+                    user,
+                    comment="Modificado",
+                )
                 show_toast("Marcado como duplicados.", type="success")
-                st.experimental_rerun()
+                st.rerun()
+
             def on_confirm_no_duplicate():
-                duplicate_service.resolve_duplicate(dupe.cde_a, dupe.cde_b, False, user, comment="Modificado")
+                duplicate_service.resolve_duplicate(
+                    dupe.cde_a,
+                    dupe.cde_b,
+                    False,
+                    user,
+                    comment="Modificado",
+                )
                 show_toast("Marcado como NO duplicados.", type="warning")
-                st.experimental_rerun()
+                st.rerun()
             open_modal(
                 title="¿Modificar la decisión de duplicidad?",
                 body_func=lambda: st.write("Selecciona nueva decisión para este par:"),

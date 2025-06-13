@@ -29,6 +29,7 @@ def apply_theme():
     st.markdown("<meta name='viewport' content='width=device-width, initial-scale=1'>", unsafe_allow_html=True)
     # Aplica CSS principal
     load_css("kraken.css")
+    inject_variables()
     # Si dark mode está habilitado, aplica CSS adicional
     if getattr(config.ui, "enable_dark_mode", False):
         dark_on = st.session_state.get("dark_mode", False)
@@ -47,7 +48,7 @@ def theme_toggle_button():
     label = "🌙 Modo oscuro" if not dark_on else "☀️ Modo claro"
     if st.sidebar.button(label, key="theme_toggle"):
         st.session_state["dark_mode"] = not dark_on
-        st.experimental_rerun()
+        st.rerun()
 
 def kraken_logo(height: int = 48):
     """

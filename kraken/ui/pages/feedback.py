@@ -75,7 +75,7 @@ def render_feedback():
         if form_data:
             fb = feedback_service.register_feedback(**form_data)
             show_toast("¡Feedback registrado correctamente!", type="success")
-            st.experimental_rerun()
+            st.rerun()
     else:
         st.info("Selecciona un atributo físico y escribe tu usuario para enviar feedback.")
 
