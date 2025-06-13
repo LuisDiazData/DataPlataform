@@ -7,6 +7,7 @@ import streamlit as st
 from datetime import datetime
 from pathlib import Path
 import pandas as pd
+from kraken.core.config import get_config
 from kraken.ui.constants import ICONS, SECTION_TITLES
 
 def render_metrics():
@@ -14,7 +15,7 @@ def render_metrics():
     st.caption("Analítica de uso, actividad y performance de Kraken. (Solo visible para administradores)")
 
     # Intenta leer un archivo de métricas si existe
-    metrics_path = Path("data/metrics.csv")
+    metrics_path = Path(get_config().files.data_dir) / "metrics.csv"
     if metrics_path.exists():
         df = pd.read_csv(metrics_path)
         # Esperado: columnas como "timestamp", "user", "action", "entity", "elapsed_ms"
@@ -40,6 +41,8 @@ def render_metrics():
             action_counts = df["action"].value_counts()
             st.bar_chart(action_counts)
     else:
-        st.info("No se encontró archivo de métricas en data/metrics.csv. Ejecuta operaciones para generar analítica.")
+        st.info(
+            f"No se encontró archivo de métricas en {metrics_path}. Ejecuta operaciones para generar analítica."
+        )
 
     st.caption("Panel de métricas Kraken v2 | Analítica para monitoreo y mejora continua.")
