@@ -1,1 +1,9 @@
-/* Default Kraken styles */
+/* Kraken default styles */
+html, body, .stApp {
+    background-color: var(--kraken-bg);
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.stButton>button, .stTextInput>div>div>input, .stTextArea>div>textarea {
+    border-radius: 6px;
+}

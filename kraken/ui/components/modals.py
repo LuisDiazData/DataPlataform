@@ -27,11 +27,11 @@ def open_modal(
         if submitted:
             if on_submit and data is not None:
                 on_submit(data)
-            st.experimental_rerun()
+            st.rerun()
         elif cancelled:
             if on_cancel:
                 on_cancel()
-            st.experimental_rerun()
+            st.rerun()
 
 def confirm_modal(
     title: str,
@@ -52,11 +52,11 @@ def confirm_modal(
         cancelled = cols[1].button(cancel_label, key=f"{key}_no")
         if confirmed:
             on_confirm()
-            st.experimental_rerun()
+            st.rerun()
         elif cancelled:
             if on_cancel:
                 on_cancel()
-            st.experimental_rerun()
+            st.rerun()
 
 def info_modal(
     title: str,
@@ -68,5 +68,5 @@ def info_modal(
     """
     with st.modal(title, key=key):
         st.write(message)
-        st.button("Cerrar", key=f"{key}_close", on_click=st.experimental_rerun)
+        st.button("Cerrar", key=f"{key}_close", on_click=st.rerun)
 
