@@ -31,7 +31,7 @@ def prepare_kraken_backend():
     Asegura que la base, embeddings y FAISS estén listos.
     """
     from kraken.core.database import init_db
-    from kraken.services.ingest.ingestor import ingest_all_from_config
+    from kraken.services.ingestor import ingest_all_from_config
     from kraken.infra.embedding_manager import get_embedding_manager
     from kraken.infra.faiss_manager import get_faiss_manager
     from kraken.repositories.attribute_repo import attribute_repo
@@ -102,7 +102,7 @@ def main():
         prepare_kraken_backend()
         run_streamlit_app()
     elif sys.argv[1] == "ingest":
-        from kraken.services.ingest.ingestor import ingest_all_from_config
+        from kraken.services.ingestor import ingest_all_from_config
         ingest_all_from_config()
         print("Ingesta finalizada.")
     else:
