@@ -59,7 +59,10 @@ class CDEService:
             clean_updates["desc_clean"] = clean_text(clean_updates["desc_raw"])
         if "biz_term" in clean_updates:
             clean_updates["biz_term"] = clean_text(clean_updates["biz_term"])
-        return self.repo.update(cde_id, clean_updates)
+        record = self.repo.find_by_cde_id(cde_id)
+        if not record:
+            return None
+        return self.repo.update(record.id, clean_updates)
 
     def get_quality_rules(self, cde_id: str) -> List[Any]:
         """
